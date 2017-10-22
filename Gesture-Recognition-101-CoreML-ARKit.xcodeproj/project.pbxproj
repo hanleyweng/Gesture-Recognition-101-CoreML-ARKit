@@ -13,6 +13,7 @@
 		AE8573551F9D179100D73806 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE8573531F9D179100D73806 /* Main.storyboard */; };
 		AE8573571F9D179100D73806 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE8573561F9D179100D73806 /* Assets.xcassets */; };
 		AE85735A1F9D179100D73806 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE8573581F9D179100D73806 /* LaunchScreen.storyboard */; };
+		AE8573651F9D206800D73806 /* example_5s0_hand_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AE8573641F9D206800D73806 /* example_5s0_hand_model.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AE8573561F9D179100D73806 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE8573591F9D179100D73806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE85735B1F9D179100D73806 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE8573641F9D206800D73806 /* example_5s0_hand_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = example_5s0_hand_model.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				AE85734D1F9D179100D73806 /* AppDelegate.swift */,
 				AE85734F1F9D179100D73806 /* art.scnassets */,
 				AE8573511F9D179100D73806 /* ViewController.swift */,
+				AE8573641F9D206800D73806 /* example_5s0_hand_model.mlmodel */,
 				AE8573531F9D179100D73806 /* Main.storyboard */,
 				AE8573561F9D179100D73806 /* Assets.xcassets */,
 				AE8573581F9D179100D73806 /* LaunchScreen.storyboard */,
@@ -142,6 +145,7 @@
 			files = (
 				AE8573521F9D179100D73806 /* ViewController.swift in Sources */,
 				AE85734E1F9D179100D73806 /* AppDelegate.swift in Sources */,
+				AE8573651F9D206800D73806 /* example_5s0_hand_model.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
