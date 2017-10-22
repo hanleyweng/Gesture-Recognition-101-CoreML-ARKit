@@ -14,6 +14,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    let dispatchQueueML = DispatchQueue(label: "com.hw.dispatchqueueml") // A Serial Queue
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +30,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        // Begin Loop to Update CoreML
+        loopCoreMLUpdate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,5 +63,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         DispatchQueue.main.async {
             // Do any desired updates to SceneKit here.
         }
+    }
+    
+    // MARK: - MACHINE LEARNING
+    
+    func loopCoreMLUpdate() {
+        // Continuously run CoreML whenever it's ready. (Preventing 'hiccups' in Frame Rate)
+        dispatchQueueML.async {
+            // 1. Run Update.
+                self.updateCoreML()
+            // 2. Loop this function.
+                self.loopCoreMLUpdate()
+        }
+    }
+    
+    func updateCoreML() {
+        print("Placeholder function: ", Date())
     }
 }
