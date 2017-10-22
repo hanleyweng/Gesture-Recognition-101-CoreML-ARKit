@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Menlo.ttc">
+            <string>Menlo-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -21,10 +26,27 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrn-jp-KnY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTo-29-GRM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.51875535100000003" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="5l8-sc-5i2"/>
+                                </constraints>
+                                <string key="text">Basic Gesture Recognition 101 
+1
+2
+3</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NTo-29-GRM" firstAttribute="trailing" secondItem="8S3-IH-5PA" secondAttribute="trailing" id="7wW-36-aun"/>
+                            <constraint firstItem="NTo-29-GRM" firstAttribute="leading" secondItem="8S3-IH-5PA" secondAttribute="leading" id="89i-TV-kQ0"/>
                             <constraint firstItem="nrn-jp-KnY" firstAttribute="top" secondItem="Gqf-L4-38n" secondAttribute="top" id="Mhf-lH-Veg"/>
+                            <constraint firstItem="NTo-29-GRM" firstAttribute="top" secondItem="Gqf-L4-38n" secondAttribute="top" id="Vl0-jN-TkZ"/>
                             <constraint firstItem="nrn-jp-KnY" firstAttribute="trailing" secondItem="8S3-IH-5PA" secondAttribute="trailing" id="cgr-No-hs8"/>
                             <constraint firstItem="nrn-jp-KnY" firstAttribute="bottom" secondItem="8S3-IH-5PA" secondAttribute="bottom" id="ctK-pi-aZH"/>
                             <constraint firstItem="nrn-jp-KnY" firstAttribute="leading" secondItem="8S3-IH-5PA" secondAttribute="leading" id="plw-2B-lBO"/>
@@ -32,6 +54,7 @@
                         <viewLayoutGuide key="safeArea" id="8S3-IH-5PA"/>
                     </view>
                     <connections>
+                        <outlet property="debugTextView" destination="NTo-29-GRM" id="hte-b1-Lo6"/>
                         <outlet property="sceneView" destination="nrn-jp-KnY" id="dAp-ft-qBx"/>
                     </connections>
                 </viewController>

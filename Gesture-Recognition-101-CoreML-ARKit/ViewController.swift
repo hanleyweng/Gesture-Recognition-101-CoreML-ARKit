@@ -14,6 +14,7 @@ import Vision
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var debugTextView: UITextView!
     
     let dispatchQueueML = DispatchQueue(label: "com.hw.dispatchqueueml") // A Serial Queue
     var visionRequests = [VNRequest]()
@@ -130,8 +131,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Render Classifications
         DispatchQueue.main.async {
             // Print Classifications
-            print(classifications)
-            print("-------------")
+                // print(classifications)
+                // print("-------------")
+            
+            // Display Debug Text on screen
+            self.debugTextView.text = "TOP 3 PROBABILITIES: \n" + classifications
         }
     }
+    
+    // MARK: - HIDE STATUS BAR
+    override var prefersStatusBarHidden : Bool { return true }
 }
