@@ -61,11 +61,11 @@
 				AE85734D1F9D179100D73806 /* AppDelegate.swift */,
 				AE85734F1F9D179100D73806 /* art.scnassets */,
 				AE8573511F9D179100D73806 /* ViewController.swift */,
-				AE8573641F9D206800D73806 /* example_5s0_hand_model.mlmodel */,
 				AE8573531F9D179100D73806 /* Main.storyboard */,
 				AE8573561F9D179100D73806 /* Assets.xcassets */,
 				AE8573581F9D179100D73806 /* LaunchScreen.storyboard */,
 				AE85735B1F9D179100D73806 /* Info.plist */,
+				AE8573641F9D206800D73806 /* example_5s0_hand_model.mlmodel */,
 			);
 			path = "Gesture-Recognition-101-CoreML-ARKit";
 			sourceTree = "<group>";
