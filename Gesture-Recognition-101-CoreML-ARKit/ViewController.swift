@@ -9,15 +9,19 @@
 import UIKit
 import SceneKit
 import ARKit
+import Vision
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
     let dispatchQueueML = DispatchQueue(label: "com.hw.dispatchqueueml") // A Serial Queue
+    var visionRequests = [VNRequest]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // --- ARKIT ---
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -30,6 +34,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        // --- ML & VISION ---
+        
+        // Setup Vision Model
+        guard let selectedModel = try? VNCoreMLModel(for: example_5s0_hand_model().model) else {
+            fatalError("Could not load model. Ensure model has been drag and dropped (copied) to XCode Project. Also ensure the model is part of a target (see: https://stackoverflow.com/questions/45884085/model-is-not-part-of-any-target-add-the-model-to-a-target-to-enable-generation ")
+        }
         
         // Begin Loop to Update CoreML
         loopCoreMLUpdate()
