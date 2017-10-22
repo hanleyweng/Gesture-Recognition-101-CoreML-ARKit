@@ -15,6 +15,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var debugTextView: UITextView!
+    @IBOutlet weak var textOverlay: UITextField!
     
     let dispatchQueueML = DispatchQueue(label: "com.hw.dispatchqueueml") // A Serial Queue
     var visionRequests = [VNRequest]()
@@ -125,7 +126,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Get Classifications
         let classifications = observations[0...2] // top 3 results
             .flatMap({ $0 as? VNClassificationObservation })
-            .map({ "\($0.identifier) \(String(format:" - %.2f", $0.confidence))" })
+            .map({ "\($0.identifier) \(String(format:" : %.2f", $0.confidence))" })
             .joined(separator: "\n")
         
         // Render Classifications
@@ -136,6 +137,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             // Display Debug Text on screen
             self.debugTextView.text = "TOP 3 PROBABILITIES: \n" + classifications
+            
+            // Display Top Symbol
+            var symbol = "❎"
+            let topPrediction = classifications.components(separatedBy: "\n")[0]
+            let topPredictionName = topPrediction.components(separatedBy: ":")[0].trimmingCharacters(in: .whitespaces)
+            if (topPredictionName == "fist-UB-RHand") { symbol = "👊" }
+            if (topPredictionName == "FIVE-UB-RHand") { symbol = "👋" }
+            self.textOverlay.text = symbol
+            
         }
     }
     

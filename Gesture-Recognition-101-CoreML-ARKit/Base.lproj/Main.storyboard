@@ -40,11 +40,19 @@
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="⏳" textAlignment="center" minimumFontSize="100" translatesAutoresizingMaskIntoConstraints="NO" id="pvy-DN-z9f">
+                                <rect key="frame" x="131.5" y="423.5" width="112" height="120"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pvy-DN-z9f" firstAttribute="centerX" secondItem="Gqf-L4-38n" secondAttribute="centerX" id="5Od-h9-GuU"/>
                             <constraint firstItem="NTo-29-GRM" firstAttribute="trailing" secondItem="8S3-IH-5PA" secondAttribute="trailing" id="7wW-36-aun"/>
                             <constraint firstItem="NTo-29-GRM" firstAttribute="leading" secondItem="8S3-IH-5PA" secondAttribute="leading" id="89i-TV-kQ0"/>
+                            <constraint firstItem="pvy-DN-z9f" firstAttribute="centerY" secondItem="Gqf-L4-38n" secondAttribute="centerY" constant="150" id="EsY-D0-3Hg"/>
                             <constraint firstItem="nrn-jp-KnY" firstAttribute="top" secondItem="Gqf-L4-38n" secondAttribute="top" id="Mhf-lH-Veg"/>
                             <constraint firstItem="NTo-29-GRM" firstAttribute="top" secondItem="Gqf-L4-38n" secondAttribute="top" id="Vl0-jN-TkZ"/>
                             <constraint firstItem="nrn-jp-KnY" firstAttribute="trailing" secondItem="8S3-IH-5PA" secondAttribute="trailing" id="cgr-No-hs8"/>
@@ -56,6 +64,7 @@
                     <connections>
                         <outlet property="debugTextView" destination="NTo-29-GRM" id="hte-b1-Lo6"/>
                         <outlet property="sceneView" destination="nrn-jp-KnY" id="dAp-ft-qBx"/>
+                        <outlet property="textOverlay" destination="pvy-DN-z9f" id="ffU-Xo-AHl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
