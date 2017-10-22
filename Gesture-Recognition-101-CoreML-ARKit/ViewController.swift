@@ -42,6 +42,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             fatalError("Could not load model. Ensure model has been drag and dropped (copied) to XCode Project. Also ensure the model is part of a target (see: https://stackoverflow.com/questions/45884085/model-is-not-part-of-any-target-add-the-model-to-a-target-to-enable-generation ")
         }
         
+        // Set up Vision-CoreML Request
+        let classificationRequest = VNCoreMLRequest(model: selectedModel, completionHandler: classificationCompleteHandler)
+        classificationRequest.imageCropAndScaleOption = VNImageCropAndScaleOption.centerCrop // Crop from centre of images and scale to appropriate size.
+        visionRequests = [classificationRequest]
+        
         // Begin Loop to Update CoreML
         loopCoreMLUpdate()
     }
@@ -89,6 +94,44 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func updateCoreML() {
-        print("Placeholder function: ", Date())
+        // Get Camera Image as RGB
+        let pixbuff : CVPixelBuffer? = (sceneView.session.currentFrame?.capturedImage)
+        if pixbuff == nil { return }
+        let ciImage = CIImage(cvPixelBuffer: pixbuff!)
+        
+        // Prepare CoreML/Vision Request
+        let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage, options: [:])
+        
+        // Run Vision Image Request
+        do {
+            try imageRequestHandler.perform(self.visionRequests)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func classificationCompleteHandler(request: VNRequest, error: Error?) {
+        // Catch Errors
+        if error != nil {
+            print("Error: " + (error?.localizedDescription)!)
+            return
+        }
+        guard let observations = request.results else {
+            print("No results")
+            return
+        }
+        
+        // Get Classifications
+        let classifications = observations[0...2] // top 3 results
+            .flatMap({ $0 as? VNClassificationObservation })
+            .map({ "\($0.identifier) \(String(format:" - %.2f", $0.confidence))" })
+            .joined(separator: "\n")
+        
+        // Render Classifications
+        DispatchQueue.main.async {
+            // Print Classifications
+            print(classifications)
+            print("-------------")
+        }
     }
 }
