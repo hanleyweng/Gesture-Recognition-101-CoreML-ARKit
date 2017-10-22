@@ -143,7 +143,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let topPrediction = classifications.components(separatedBy: "\n")[0]
             let topPredictionName = topPrediction.components(separatedBy: ":")[0].trimmingCharacters(in: .whitespaces)
             if (topPredictionName == "fist-UB-RHand") { symbol = "👊" }
-            if (topPredictionName == "FIVE-UB-RHand") { symbol = "👋" }
+            if (topPredictionName == "FIVE-UB-RHand") { symbol = "🖐" }
             self.textOverlay.text = symbol
             
         }
