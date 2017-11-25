@@ -142,8 +142,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             var symbol = "❎"
             let topPrediction = classifications.components(separatedBy: "\n")[0]
             let topPredictionName = topPrediction.components(separatedBy: ":")[0].trimmingCharacters(in: .whitespaces)
-            if (topPredictionName == "fist-UB-RHand") { symbol = "👊" }
-            if (topPredictionName == "FIVE-UB-RHand") { symbol = "🖐" }
+            // Only display a prediction if confidence is above 1%
+            let topPredictionScore:Float? = Float(topPrediction.components(separatedBy: ":")[1].trimmingCharacters(in: .whitespaces))
+            if (topPredictionScore != nil && topPredictionScore! > 0.01) {
+                if (topPredictionName == "fist-UB-RHand") { symbol = "👊" }
+                if (topPredictionName == "FIVE-UB-RHand") { symbol = "🖐" }
+            }
+            
             self.textOverlay.text = symbol
             
         }
